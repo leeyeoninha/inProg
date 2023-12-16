@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.inha.demo.member.dao.MemberMapper;
 import com.inha.demo.member.dto.Member;
-import com.inha.demo.member.mapper.MemberMapper;
 import com.inha.demo.member.service.MemberService;
 
 @Service

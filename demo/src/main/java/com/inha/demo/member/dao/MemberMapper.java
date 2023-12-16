@@ -1,4 +1,4 @@
-package com.inha.demo.member.mapper;
+package com.inha.demo.member.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;

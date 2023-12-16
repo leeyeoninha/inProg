@@ -2,6 +2,7 @@ package com.inha.demo.main;
 
 import java.util.NoSuchElementException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,10 +13,8 @@ import com.inha.demo.member.service.MemberService;
 @RestController
 public class MainController {
 
-    MemberService memberService;
-    public MainController(MemberService memberService){
-        this.memberService = memberService;
-    }
+    @Autowired
+    private MemberService memberService;
     
     // Test : 브라우저에 http://localhost:8080/hello?name=crlee         
     @GetMapping("/hello")

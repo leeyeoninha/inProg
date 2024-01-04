@@ -16,7 +16,7 @@ public class MainController {
     @Autowired
     private MemberService memberService;
     
-    // Test : 브라우저에 http://localhost:8080/hello?name=crlee         
+    // API 호출 방법 : 브라우저 주소창에 http://localhost:8080/hello?name=홍길동
     @GetMapping("/hello")
     public String sayHellow(@RequestParam("name") String name){
         Member member;

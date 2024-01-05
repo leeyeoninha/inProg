@@ -9,5 +9,8 @@ import com.inha.demo.member.dto.Member;
 @Mapper
 public interface MemberMapper {
     public Member getMemberByName(String name);
+    public Member getMemberById(String id);
+    public int insert(Member member);
+    
     
 }

@@ -1,7 +1,5 @@
 package com.inha.demo.main;
 
-import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +22,7 @@ public class MainController {
         try{
             member = memberService.getMember(name);
             result = "Hellow! My Name is " + member.getName() + " " + member.getAge()+" years old";
-        }catch(NoSuchElementException e){
+        }catch(Exception e){
             result = "Member Data가 없습니다.";
         }
         return result;

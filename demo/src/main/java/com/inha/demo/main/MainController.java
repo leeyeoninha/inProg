@@ -23,7 +23,7 @@ public class MainController {
         String result;
         try{
             member = memberService.getMember(name);
-            result = "Hellow! My Name is " + member.getName() + " " + member.getAge()+" years old";
+            result = "Hellow! 저는 " + member.getName() + "입니다. " + member.getAge()+"살 입니다.";
         }catch(NoSuchElementException e){
             result = "Member Data가 없습니다.";
         }

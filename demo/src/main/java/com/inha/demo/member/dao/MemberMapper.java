@@ -1,9 +1,8 @@
 package com.inha.demo.member.dao;
 
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.inha.demo.member.dto.Member;
+import org.apache.ibatis.annotations.Mapper;
 
 
 @Mapper

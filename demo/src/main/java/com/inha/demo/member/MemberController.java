@@ -1,6 +1,7 @@
 package com.inha.demo.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +28,8 @@ public class MemberController {
             // memberService의 signUp 메소드를 호출하여 회원가입 로직을 수행합니다.
             // 만약 회원가입 과정에서 문제가 발생하면 Exception을 던집니다.
             memberService.signUp(member);
-        }catch(Exception e){
-            // 회원가입 과정에서 Exception이 발생하면, HTTP 상태 코드 400(Bad Request)와 함께
+        }catch(DuplicateKeyException e){
+            // 회원가입 과정에서 DuplicateKeyException이 발생하면, HTTP 상태 코드 400(Bad Request)와 함께
             // Exception 메시지를 본문으로 하는 응답을 반환합니다.
             return ResponseEntity.badRequest().body(e.getMessage());
         }

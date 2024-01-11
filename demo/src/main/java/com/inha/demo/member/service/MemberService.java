@@ -18,7 +18,7 @@ public class MemberService{
     @Autowired
     private MemberMapper memberMapper;
 
-    public Member getMember(String name) throws Exception{
+    public Member getMember(String name) throws NoSuchElementException{
         Member member = memberMapper.getMemberByName(name);
 
         if( member == null ){
@@ -27,7 +27,7 @@ public class MemberService{
         return member;
     }
 
-    public Member signUp(Member member) throws Exception{
+    public Member signUp(Member member) throws DuplicateKeyException{
         // member.getId()을 통해 받아온 ID로 기존 멤버를 검색합니다. 이를 통해 ID의 중복 여부를 확인합니다.
         Member searchMember = memberMapper.getMemberById(member.getId());
     

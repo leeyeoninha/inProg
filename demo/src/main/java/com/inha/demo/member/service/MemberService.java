@@ -52,5 +52,22 @@ public class MemberService{
         // 새로 회원가입된 멤버 정보를 반환합니다.
         return member;
     }
-    
+
+    /**
+     * 주어진 id,password로 회원 정보를 조회합니다.
+     * @param id,password
+     * @return 로그인한 회원 객체
+     * @throws NoSuchElementException 아이디가 존재하지 않을 경우, 패스워드가 틀릴 경우
+     */
+    public Member signIn(String id, String password) throws NoSuchElementException{
+
+        Member member = memberMapper.getMemberById(id);
+        if( member == null ){
+            throw new NoSuchElementException("존재하지 않는 아이디입니다.");
+        };
+        if ( !(password).equals(member.getPasswd()) ) {
+            throw new NoSuchElementException("비밀번호를 확인해주세요.");
+        };
+        return member;
+    }
 }

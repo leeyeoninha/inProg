@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inha.demo.member.dto.Member;
 import com.inha.demo.member.service.MemberService;
 
+import java.util.Map;
+import java.util.NoSuchElementException;
+
 // @RestController 어노테이션을 사용하여 이 클래스가 RESTful 웹 서비스의 컨트롤러임을 지정합니다.
 @RestController
 public class MemberController {
@@ -20,7 +23,7 @@ public class MemberController {
         
     // HTTP POST 요청을 "/signup" URL로 받아들이는 메소드를 정의합니다.
     @PostMapping("/signup")
-    public ResponseEntity<String>  signup(
+    public ResponseEntity<String> signup(
         // @RequestBody 어노테이션을 사용하여 클라이언트가 보낸 HTTP 요청 본문을 Member 객체로 변환합니다.
         @RequestBody Member member
     ){
@@ -36,4 +39,25 @@ public class MemberController {
         // 회원가입이 성공적으로 이루어지면, HTTP 상태 코드 200(OK)와 함께 "회원가입 성공" 메시지를 본문으로 하는 응답을 반환합니다.
         return ResponseEntity.ok("회원가입 성공");
     }
+
+    @PostMapping("/signIn")
+    public ResponseEntity<String> signIn(
+        @RequestBody Map<String,Object> param
+    ) {
+        String id = param.get("id").toString();  // 클라이언트에서 보낸 id를 문자열로 변환하여 저장합니다.
+        String password = param.get("passwd").toString(); // 클라이언트에서 보낸 비밀번호를 문자열로 변환하여 저장합니다.
+
+        try{
+            // memberService의 signIn 메소드를 호출하여 로그인 로직을 수행합니다.
+            // 만약 로그인 과정에서 문제가 발생하면 Exception을 던집니다.
+            memberService.signIn(id,password);
+        }catch(NoSuchElementException e){
+            // 로그인 과정에서 DuplicateKeyException이 발생하면, HTTP 상태 코드 400(Bad Request)와 함께
+            // Exception 메시지를 본문으로 하는 응답을 반환합니다.
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        return ResponseEntity.ok("로그인 성공");
+    }
+    
+    
 }

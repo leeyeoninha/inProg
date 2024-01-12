@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.inha.demo.member.dao.MemberMapper;
 import com.inha.demo.member.dto.Member;
 
-
 // @Service 어노테이션을 사용하여 이 클래스가 서비스 계층의 컴포넌트임을 지정합니다.
 @Service
 public class MemberService{
@@ -18,15 +17,28 @@ public class MemberService{
     @Autowired
     private MemberMapper memberMapper;
 
+    /**
+     * 주어진 이름으로 회원 정보를 조회합니다.
+     * @param name 회원 이름
+     * @return 조회된 회원 정보
+     * @throws NoSuchElementException 회원 정보가 없을 경우 예외 발생
+     */
     public Member getMember(String name) throws NoSuchElementException{
         Member member = memberMapper.getMemberByName(name);
 
         if( member == null ){
+            // 조회된 member가 없을 경우 NoSuchElementException 예외를 던집니다.
             throw new NoSuchElementException("Not Found Member");
         }
         return member;
     }
 
+    /**
+     * 주어진 이름으로 회원 정보를 조회합니다.
+     * @param member 회원 객체
+     * @return 등록된 회원 객체
+     * @throws DuplicateKeyException 중복된 회원이 존재할 경우 예외 발생
+     */
     public Member signUp(Member member) throws DuplicateKeyException{
         // member.getId()을 통해 받아온 ID로 기존 멤버를 검색합니다. 이를 통해 ID의 중복 여부를 확인합니다.
         Member searchMember = memberMapper.getMemberById(member.getId());

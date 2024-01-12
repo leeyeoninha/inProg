@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+<!-- namespace 는 @Mapper 어노테이션이 붙은 클래스로 매핑합니다.-->
 <mapper namespace="com.inha.demo.member.dao.MemberMapper">
 
+    <!-- 
+        id 는 Mapper 클래스의 메서드의 명으로 매핑합니다.
+        resultType는 return Type을 의미하며 Member 객체와 매핑합니다.
+    -->
     <select id="getMemberByName" resultType="com.inha.demo.member.dto.Member">
         select * from member where name = #{name}
     </select>
@@ -11,6 +17,7 @@
     <select id="getMemberById" resultType="com.inha.demo.member.dto.Member">
         select * from member where id = #{id}
     </select>
+    
     <insert id="insert">
         INSERT INTO member(
             id,passwd,name,age,email

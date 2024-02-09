@@ -5,6 +5,7 @@
 </template>
 
 <script>
+//Vue.js 컴포넌트를 export합니다. 
 export default {
   name: 'NameCard'
 }

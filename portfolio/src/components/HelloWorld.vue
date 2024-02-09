@@ -1,30 +1,30 @@
 <template>
   <div id="app">
     <NameCard></NameCard>
-    <Introduction></Introduction>
+    <AboutMe></AboutMe>
+    <Info></Info>
     <Contact></Contact>
     <Education></Education>
-    <Skills></Skills>
     <Project></Project>
   </div>
 </template>
 
 <script>
 import NameCard from './NameCard.vue'
-import Introduction from './Introduction.vue'
+import AboutMe from './AboutMe.vue'
+import Info from './Info.vue'
 import Contact from './Contact.vue'
 import Education from './Education.vue'
-import Skills from './Skills.vue'
 import Project from './Project.vue'
 
 export default {
   name: 'App',
   components: {
     NameCard,
+    Info,
     Contact,
-    Introduction,
+    AboutMe,
     Education,
-    Skills,
     Project
   }
 }

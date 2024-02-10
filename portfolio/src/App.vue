@@ -1,4 +1,5 @@
 <template>
+  <!-- /assets폴더 및의 hong.jpg 이미지 표현 -->
   <img id="logo" alt="Vue logo" src="./assets/hong.jpg">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
